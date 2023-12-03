@@ -2,8 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Medal } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { headingFont } from "@/components/fonts/headingFont";
-import { textFont } from "@/components/fonts/textFont";
+import { headingFont } from "@/components/fonts/heading-font";
+import { textFont } from "@/components/fonts/text-font";
 
 const MarketingPage = () => {
   return (

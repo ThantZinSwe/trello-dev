@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { headingFont } from "@/components/fonts/headingFont";
+import { headingFont } from "@/components/fonts/heading-font";
 
 const Logo = () => {
   return (
