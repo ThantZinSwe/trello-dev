@@ -1,3 +1,4 @@
-export interface FormErrors {
-  errors?: Record<string, any>;
+export interface FormErrorsProps {
+  id: string;
+  errors?: Record<string, string[] | undefined>;
 }

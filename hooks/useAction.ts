@@ -34,9 +34,7 @@ const useAction = <TInput, TOutput>(
           return;
         }
 
-        if (result.fieldErrors) {
-          setFieldErrors(result.fieldErrors);
-        }
+        setFieldErrors(result.fieldErrors);
 
         if (result.error) {
           setError(result.error);
@@ -44,8 +42,6 @@ const useAction = <TInput, TOutput>(
         }
 
         if (result.data) {
-          setError(undefined);
-          setFieldErrors(undefined);
           setData(result.data);
           options.onSuccess?.(result.data);
         }
