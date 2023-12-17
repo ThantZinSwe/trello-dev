@@ -7,7 +7,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const BoardList = async () => {
+export const BoardList = async () => {
   const { orgId } = auth();
 
   if (!orgId) {
@@ -55,8 +55,6 @@ const BoardList = async () => {
     </div>
   );
 };
-
-export default BoardList;
 
 BoardList.Skeleton = function SkeletonBoardList() {
   return (
