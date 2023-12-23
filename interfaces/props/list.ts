@@ -14,3 +14,8 @@ export interface ListItemProps {
 export interface ListHeaderProps {
   list: List;
 }
+
+export interface ListOptionsProps {
+  list: List;
+  onAddCard: () => void;
+}

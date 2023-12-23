@@ -7,6 +7,7 @@ import { ListHeaderProps } from "@/interfaces/props/list";
 import { ElementRef, KeyboardEvent, useRef, useState } from "react";
 import { toast } from "sonner";
 import { useEventListener } from "usehooks-ts";
+import ListOptions from "./options";
 
 const ListHeader = ({ list }: ListHeaderProps) => {
   const formRef = useRef<ElementRef<"form">>(null);
@@ -95,6 +96,7 @@ const ListHeader = ({ list }: ListHeaderProps) => {
           {list.title}
         </div>
       )}
+      <ListOptions list={list} onAddCard={() => {}} />
     </div>
   );
 };
