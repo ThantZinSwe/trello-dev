@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { useEventListener } from "usehooks-ts";
 import ListOptions from "./options";
 
-const ListHeader = ({ list }: ListHeaderProps) => {
+const ListHeader = ({ list, onAddCard }: ListHeaderProps) => {
   const formRef = useRef<ElementRef<"form">>(null);
   const inputRef = useRef<ElementRef<"input">>(null);
 
@@ -96,7 +96,7 @@ const ListHeader = ({ list }: ListHeaderProps) => {
           {list.title}
         </div>
       )}
-      <ListOptions list={list} onAddCard={() => {}} />
+      <ListOptions list={list} onAddCard={onAddCard} />
     </div>
   );
 };

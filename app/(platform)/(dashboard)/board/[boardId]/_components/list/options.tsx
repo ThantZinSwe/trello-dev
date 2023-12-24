@@ -82,8 +82,13 @@ const ListOptions = ({ list, onAddCard }: ListOptionsProps) => {
           Add card
         </Button>
         <form action={onCopy}>
-          <input hidden name="id" id="id" value={list.id} />
-          <input hidden name="boardId" id="boardId" value={list.boardId} />
+          <input hidden name="id" id="id" defaultValue={list.id} />
+          <input
+            hidden
+            name="boardId"
+            id="boardId"
+            defaultValue={list.boardId}
+          />
           <FormSubmitButton
             variant="ghost"
             className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
@@ -95,8 +100,13 @@ const ListOptions = ({ list, onAddCard }: ListOptionsProps) => {
         <Separator />
 
         <form action={onDelete}>
-          <input hidden name="id" id="id" value={list.id} />
-          <input hidden name="boardId" id="boardId" value={list.boardId} />
+          <input hidden name="id" id="id" defaultValue={list.id} />
+          <input
+            hidden
+            name="boardId"
+            id="boardId"
+            defaultValue={list.boardId}
+          />
           <FormSubmitButton
             variant="ghost"
             className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
