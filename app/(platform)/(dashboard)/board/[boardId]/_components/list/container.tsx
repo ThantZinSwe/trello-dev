@@ -5,6 +5,10 @@ import ListForm from "./form";
 import { useEffect, useState } from "react";
 import ListItem from "./item";
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
+import useAction from "@/hooks/useAction";
+import { updateListOrder } from "@/actions/list/update/order";
+import { toast } from "sonner";
+import { updateCardOrder } from "@/actions/card/update/order";
 
 function reorder<T>(list: T[], startIndex: number, endIndex: number) {
   const result = [...list];
@@ -16,6 +20,22 @@ function reorder<T>(list: T[], startIndex: number, endIndex: number) {
 
 const ListContainer = ({ lists, boardId }: ListContainerProps) => {
   const [orderData, setOrderData] = useState(lists);
+  const { execute: updateListOrderExecute } = useAction(updateListOrder, {
+    onSuccess: () => {
+      toast.success("List reordered");
+    },
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
+  const { execute: updateCardOrderExecute } = useAction(updateCardOrder, {
+    onSuccess: () => {
+      toast.success("Card reordered");
+    },
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
 
   useEffect(() => {
     setOrderData(lists);
@@ -40,6 +60,7 @@ const ListContainer = ({ lists, boardId }: ListContainerProps) => {
         (item, index) => ({ ...item, order: index })
       );
       setOrderData(items);
+      updateListOrderExecute({ items, boardId });
     }
 
     if (type === "card") {
@@ -77,6 +98,7 @@ const ListContainer = ({ lists, boardId }: ListContainerProps) => {
         sourceList.cards = reorderCards;
 
         setOrderData(newOrderData);
+        updateCardOrderExecute({ items: reorderCards, boardId });
       } else {
         // remove card
         const [movedCard] = sourceList.cards.splice(source.index, 1);
@@ -92,6 +114,7 @@ const ListContainer = ({ lists, boardId }: ListContainerProps) => {
         destList.cards.map((card, index) => (card.order = index));
 
         setOrderData(newOrderData);
+        updateCardOrderExecute({ items: destList.cards, boardId });
       }
     }
   };
