@@ -1,3 +1,4 @@
+import { CardWithList } from "@/types/types";
 import { Card } from "@prisma/client";
 
 export interface CardFormProps {
@@ -10,4 +11,16 @@ export interface CardFormProps {
 export interface CardItemProps {
   index: number;
   card: Card;
+}
+
+export interface CardHeaderModalProps {
+  card: CardWithList;
+}
+
+export interface CardDescriptionModalProps {
+  card: CardWithList;
+}
+
+export interface CardActionsModalProps {
+  card: CardWithList;
 }
