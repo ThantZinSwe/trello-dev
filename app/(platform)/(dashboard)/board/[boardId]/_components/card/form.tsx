@@ -6,7 +6,6 @@ import FormTextarea from "@/components/form/textarea";
 import { Button } from "@/components/ui/button";
 import useAction from "@/hooks/useAction";
 import { CardFormProps } from "@/interfaces/props/card";
-import { error } from "console";
 import { Plus, X } from "lucide-react";
 import { useParams } from "next/navigation";
 import { ElementRef, KeyboardEventHandler, forwardRef, useRef } from "react";

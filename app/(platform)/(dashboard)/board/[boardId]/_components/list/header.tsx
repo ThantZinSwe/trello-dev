@@ -45,6 +45,8 @@ const ListHeader = ({ list, onAddCard }: ListHeaderProps) => {
 
     if (title === list.title) {
       disableEditing();
+
+      return;
     }
 
     execute({
