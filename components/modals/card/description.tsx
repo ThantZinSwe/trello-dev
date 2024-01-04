@@ -49,6 +49,9 @@ const CardDescriptionModal = ({ card }: CardDescriptionModalProps) => {
       queryClient.invalidateQueries({
         queryKey: ["card", card.id],
       });
+      queryClient.invalidateQueries({
+        queryKey: ["card-logs", data.id],
+      });
       toast.success(`Card ${data.title} updated`);
       disableEditing();
     },
