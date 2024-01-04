@@ -37,8 +37,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     await createAuditLog({
       entityId: board.id,
       entityTitle: board.title,
-      entityType: ENTITY_TYPE.CARD,
-      action: ACTION.CREATE,
+      entityType: ENTITY_TYPE.BOARD,
+      action: ACTION.UPDATE,
     });
   } catch (error) {
     return {

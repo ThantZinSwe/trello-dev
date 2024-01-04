@@ -9,6 +9,7 @@ import { createSafeAction } from "@/lib/create-safe-action";
 import DeleteBoard from "./schema";
 import { createAuditLog } from "@/lib/create-audit-log";
 import { ACTION, ENTITY_TYPE } from "@prisma/client";
+import { decreaseAvailableCount } from "@/lib/org-limit";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { orgId, userId } = auth();
@@ -31,11 +32,13 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
 
+    await decreaseAvailableCount();
+
     await createAuditLog({
       entityId: board.id,
       entityTitle: board.title,
-      entityType: ENTITY_TYPE.CARD,
-      action: ACTION.CREATE,
+      entityType: ENTITY_TYPE.BOARD,
+      action: ACTION.DELETE,
     });
   } catch (error) {
     return {
