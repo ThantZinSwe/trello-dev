@@ -1,3 +1,4 @@
+import { Session } from "inspector";
 import { z } from "zod";
 
 export type FieldErrors<T> = {
@@ -11,18 +12,18 @@ export type ActionState<TInput, TOutput> = {
 };
 
 export const createSafeAction = <TInput, TOutput>(
-  schema: z.Schema,
+  schema: z.Schema<TInput>,
   handler: (validatedData: TInput) => Promise<ActionState<TInput, TOutput>>
 ) => {
   return async (data: TInput): Promise<ActionState<TInput, TOutput>> => {
-    const result = schema.safeParse(data);
-
-    if (!result.success) {
+    const validationResult = schema.safeParse(data);
+    if (!validationResult.success) {
       return {
-        fieldErrors: result.error.flatten().fieldErrors as FieldErrors<TInput>,
+        fieldErrors: validationResult.error.flatten()
+          .fieldErrors as FieldErrors<TInput>,
       };
     }
 
-    return handler(result.data);
+    return handler(validationResult.data);
   };
 };

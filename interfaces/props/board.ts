@@ -8,3 +8,7 @@ export interface BoardIdProps {
     boardId: string;
   };
 }
+
+export interface InfoProps {
+  isPro: boolean;
+}
